@@ -1,0 +1,203 @@
+trigger: none
+
+variables:
+  - group: epod_app
+
+pool:
+  vmImage: 'macOS-13'
+
+stages:
+  - stage: Get_Version
+    jobs:
+      - job: get_version_job
+        steps:
+          - task: PowerShell@2
+            displayName: 'Get Version From package.json'
+            name: Get_Version_Task
+            inputs:
+              targetType: 'inline'
+              script: |
+                # Extract existing version of package.json
+                $oldVer=$(jq -r ".version" package.json)
+                # Set environment variables
+                Write-Host "##vso[task.setvariable variable=NEW_VERSION;isOutput=true]$oldVer";
+                echo $oldVer
+
+    #variables:
+    #  FolderName: $[stageDependencies.Start.start_job.outputs['Get_Folder_Name.NEW_VERSION']]
+
+  # # - stage: Install_Node_Dependencies
+  # #   displayName: 'Install Node'
+  # #   jobs:
+  # #   - job: Install_Node_Dependencies_Job
+  # #     steps:
+  # #         - checkout: self
+  # #           persistCredentials: true
+  # #           clean: true
+
+  # #         - task: NodeTool@0
+  # #           displayName: 'Install Node'
+  # #           inputs:
+  # #             versionSpec: '10.15.1'
+
+  # #         - script: yarn install
+  # #           displayName: Install Dependencies
+
+  - stage: IOS
+    dependsOn: Get_Version
+    variables:
+      FolderName: $[stageDependencies.Get_Version.get_version_job.outputs['Get_Version_Task.NEW_VERSION']]
+    jobs:
+      - job: IOS_Compile
+        steps:
+          - checkout: self
+            persistCredentials: true
+            clean: true
+
+          - task: NodeTool@0
+            displayName: 'Install Node 10.15.1'
+            inputs:
+              versionSpec: '10.15.1'
+
+          - script: |
+              curl -O https://www.python.org/ftp/python/2.7.18/python-2.7.18-macosx10.9.pkg
+              sudo installer -pkg python-2.7.18-macosx10.9.pkg -target /
+              rm python-2.7.18-macosx10.9.pkg
+              /usr/local/bin/python2.7 --version
+            displayName: 'Install Python 2.7.18'
+
+          - script: |
+              echo "##vso[task.setvariable variable=PYTHON]/usr/local/bin/python2.7"
+              export PYTHON=/usr/local/bin/python2.7
+              $PYTHON --version
+            displayName: 'Set and Verify PYTHON Environment Variable'
+
+          - script: yarn install
+            displayName: 'Install Dependencies'
+
+          - task: InstallAppleCertificate@2
+            displayName: 'Install Apple Certificate'
+            inputs:
+              certSecureFile: 'iOS Distribution_CEhelp_2027-11-11.p12'
+              certPwd: '$(AppleCert2Password)'
+              keychain: 'temp'
+              deleteCert: true
+
+          - task: InstallAppleProvisioningProfile@1
+            displayName: 'Install Apple Provisioning Profile'
+            inputs:
+              provisioningProfileLocation: 'secureFiles'
+              provProfileSecureFile: 'Kerry_IL_ePOD2_Production (1).mobileprovision'
+              removeProfile: true
+
+          - task: CocoaPods@0
+            displayName: 'Install CocoaPods'
+            inputs:
+              workingDirectory: 'ios'
+
+          - task: Bash@3
+            displayName: 'Set bundle version'
+            inputs:
+              targetType: 'inline'
+              script: |
+                /usr/libexec/PlistBuddy -c "Set CFBundleName $(FolderName)_trial" ./Info.plist
+                /usr/libexec/PlistBuddy -c "Set CFBundleDisplayName KOOLPoD" ./Info.plist
+              workingDirectory: 'ios/ePOD'
+
+          - task: Xcode@5
+            displayName: 'Build IPA'
+            inputs:
+              actions: 'build'
+              configuration: 'Release'
+              sdk: 'iphoneos'
+              xcWorkspacePath: 'ios/ePOD.xcworkspace'
+              scheme: 'ePOD'
+              packageApp: true
+              exportPath: 'output/ipa'
+              signingOption: 'manual'
+              signingIdentity: '$(APPLE_CERTIFICATE_SIGNING_IDENTITY)'
+              provisioningProfileUuid: '$(APPLE_PROV_PROFILE_UUID)'
+              args: '-parallelizeTargets -quiet'
+              xcodeVersion: 'default'
+              #useLegacyBuildSystem: true # Uncomment if needed
+
+          - task: CopyFiles@2
+            displayName: 'Copy IPA'
+            inputs:
+              contents: '**/*.ipa'
+              targetFolder: '$(build.artifactStagingDirectory)'
+              overWrite: true
+              flattenFolders: true
+
+          - task: PublishBuildArtifacts@1
+            displayName: 'Publish IPA to artifacts'
+            inputs:
+              PathtoPublish: '$(build.artifactStagingDirectory)'
+              ArtifactName: 'ios'
+              publishLocation: 'Container'
+
+  # - stage: Android
+  #   variables:
+  #     FolderName: $[stageDependencies.Get_Version.get_version_job.outputs['Get_Version_Task.NEW_VERSION']]
+  #   dependsOn: Get_Version
+  #   jobs:
+  #   - job: Android_Compile
+  #     steps:
+  #     - checkout: self
+  #       persistCredentials: true
+  #       clean: true
+
+  #     - task: NodeTool@0
+  #       displayName: 'Install Node'
+  #       inputs:
+  #         versionSpec: '10.15.1'
+
+  #     - script: npm i
+  #       displayName: Install Dependencies
+
+  #     - script: |
+  #         npm install --save-dev jetifier
+  #         npx jetify
+  #       displayName: 'Jetify'
+
+  #     - task: PowerShell@2
+  #       displayName: 'Fix @mauron85'
+  #       inputs:
+  #         targetType: 'inline'
+  #         script: |
+  #           echo 'android.builder.sdkDownload=true' > $(System.DefaultWorkingDirectory)/node_modules/@mauron85/react-native-background-geolocation/android/common/gradle.properties
+  #           cd android
+  #           ./gradlew clean
+  #           cd ..
+
+  #     - task: Gradle@2
+  #       displayName: 'Build APK'
+  #       inputs:
+  #         gradleWrapperFile: 'android/gradlew'
+  #         workingDirectory: 'android/'
+  #         # options: '-PversionName=$(NEW_VERSION) -PversionCode=$(Build.BuildId)'
+  #         tasks: 'app:assembleRelease'
+  #         publishJUnitResults: false
+  #         javaHomeOption: 'JDKVersion'
+  #         jdkVersionOption: '1.8'
+  #         gradleOptions: '-Xmx3072m'
+  #         sonarQubeRunAnalysis: false
+
+  #     - task: AndroidSigning@3
+  #       displayName: 'Sign APK'
+  #       inputs:
+  #         apksign: true
+  #         apkFiles: 'android/app/build/outputs/apk/stag/release/*.apk'
+  #         apksignerKeystoreFile: 'epod.keystore'
+  #         apksignerKeystorePassword: '$(AndroidKeyStorePassword)'
+  #         apksignerKeystoreAlias: '$(AndroidKeyAlias)'
+  #         apksignerKeyPassword: '$(AndroidKeyAliasPassword)'
+  #         apksignerArguments: --out android/app/build/outputs/apk/stag/release/$(FolderName)_trial.apk
+  #         zipalign: true
+
+  #     - task: PublishBuildArtifacts@1
+  #       displayName: 'Publish APK to artifacts'
+  #       inputs:
+  #         PathtoPublish: 'android/app/build/outputs/apk/stag/release'
+  #         ArtifactName: 'android'
+  #         publishLocation: 'Container'

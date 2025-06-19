@@ -1,0 +1,62 @@
+{
+  "images": [
+    {
+      "filename": "ios_icon_kerry_logistics40.png",
+      "idiom": "iphone",
+      "scale": "2x",
+      "size": "20x20"
+    },
+    {
+      "filename": "ios_icon_kerry_logistics60.png",
+      "idiom": "iphone",
+      "scale": "3x",
+      "size": "20x20"
+    },
+    {
+      "filename": "ios_icon_kerry_logistics58.png",
+      "idiom": "iphone",
+      "scale": "2x",
+      "size": "29x29"
+    },
+    {
+      "filename": "ios_icon_kerry_logistics87.png",
+      "idiom": "iphone",
+      "scale": "3x",
+      "size": "29x29"
+    },
+    {
+      "filename": "ios_icon_kerry_logistics80.png",
+      "idiom": "iphone",
+      "scale": "2x",
+      "size": "40x40"
+    },
+    {
+      "filename": "ios_icon_kerry_logistics120.png",
+      "idiom": "iphone",
+      "scale": "3x",
+      "size": "40x40"
+    },
+    {
+      "filename": "ios_icon_kerry_logistics120-1.png",
+      "idiom": "iphone",
+      "scale": "2x",
+      "size": "60x60"
+    },
+    {
+      "filename": "ios_icon_kerry_logistics180.png",
+      "idiom": "iphone",
+      "scale": "3x",
+      "size": "60x60"
+    },
+    {
+      "filename": "ios_icon_kerry_logistics1024.png",
+      "idiom": "ios-marketing",
+      "scale": "1x",
+      "size": "1024x1024"
+    }
+  ],
+  "info": {
+    "author": "xcode",
+    "version": 1
+  }
+}

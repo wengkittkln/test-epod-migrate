@@ -1,0 +1,275 @@
+{
+  "project_info": {
+    "project_number": "111104457925",
+    "firebase_url": "https://kerryepodapp.firebaseio.com",
+    "project_id": "kerryepodapp",
+    "storage_bucket": "kerryepodapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:111104457925:android:eeabbb219b4664140e04ac",
+        "android_client_info": {
+          "package_name": "com.agmostudio.epod"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "111104457925-nj0f584bv3ib4imr87siqcku2fdap0hc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhHcMwjPpzoe_aSxvTb0CXIywGK-X5cUQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "111104457925-nj0f584bv3ib4imr87siqcku2fdap0hc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "111104457925-1026ng1gqd9o9fq9lgg0lc0o1vpj347m.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kerrylogistics.epod"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:111104457925:android:a20ddf41cda5fd54",
+        "android_client_info": {
+          "package_name": "com.kerrylogistics.epod"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "111104457925-673m12drd49b06816caehfu17dlere10.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kerrylogistics.epod",
+            "certificate_hash": "0fbff00e9b5fd271410686727700dc071d951075"
+          }
+        },
+        {
+          "client_id": "111104457925-nj0f584bv3ib4imr87siqcku2fdap0hc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhHcMwjPpzoe_aSxvTb0CXIywGK-X5cUQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "111104457925-nj0f584bv3ib4imr87siqcku2fdap0hc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "111104457925-1026ng1gqd9o9fq9lgg0lc0o1vpj347m.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kerrylogistics.epod"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:111104457925:android:21a0a30092bb9ff0",
+        "android_client_info": {
+          "package_name": "com.kerrylogistics.epod.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "111104457925-p6sejeao25ag2cn0urrc5aj68327a8mo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kerrylogistics.epod.dev",
+            "certificate_hash": "0fbff00e9b5fd271410686727700dc071d951075"
+          }
+        },
+        {
+          "client_id": "111104457925-nj0f584bv3ib4imr87siqcku2fdap0hc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhHcMwjPpzoe_aSxvTb0CXIywGK-X5cUQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "111104457925-nj0f584bv3ib4imr87siqcku2fdap0hc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "111104457925-1026ng1gqd9o9fq9lgg0lc0o1vpj347m.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kerrylogistics.epod"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:111104457925:android:1ade909da1ba234c0e04ac",
+        "android_client_info": {
+          "package_name": "com.kerrylogistics.epod.prod"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "111104457925-cec1j6ff6mnscj18g9rie99ddubkk1be.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kerrylogistics.epod.prod",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "111104457925-m853frf5ho35ho4ekupufh0kdg00h6p7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kerrylogistics.epod.prod",
+            "certificate_hash": "7363bc9d3f97392f78724d040e48beb18cb9f307"
+          }
+        },
+        {
+          "client_id": "111104457925-nj0f584bv3ib4imr87siqcku2fdap0hc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhHcMwjPpzoe_aSxvTb0CXIywGK-X5cUQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "111104457925-nj0f584bv3ib4imr87siqcku2fdap0hc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "111104457925-1026ng1gqd9o9fq9lgg0lc0o1vpj347m.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kerrylogistics.epod"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:111104457925:android:26f3de3f0a1e9f15",
+        "android_client_info": {
+          "package_name": "com.kerrylogistics.epod.staging"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "111104457925-s5csvi7q44vl3di6rtficn20j9t41pql.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kerrylogistics.epod.staging",
+            "certificate_hash": "0fbff00e9b5fd271410686727700dc071d951075"
+          }
+        },
+        {
+          "client_id": "111104457925-nj0f584bv3ib4imr87siqcku2fdap0hc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhHcMwjPpzoe_aSxvTb0CXIywGK-X5cUQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "111104457925-nj0f584bv3ib4imr87siqcku2fdap0hc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "111104457925-1026ng1gqd9o9fq9lgg0lc0o1vpj347m.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kerrylogistics.epod"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:111104457925:android:e91564dc26abd17b",
+        "android_client_info": {
+          "package_name": "com.kerrylogistics.epod.trial"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "111104457925-cae8mi9e97m8deivftdjpfpmje03fgf0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kerrylogistics.epod.trial",
+            "certificate_hash": "0fbff00e9b5fd271410686727700dc071d951075"
+          }
+        },
+        {
+          "client_id": "111104457925-nj0f584bv3ib4imr87siqcku2fdap0hc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhHcMwjPpzoe_aSxvTb0CXIywGK-X5cUQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "111104457925-nj0f584bv3ib4imr87siqcku2fdap0hc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "111104457925-1026ng1gqd9o9fq9lgg0lc0o1vpj347m.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kerrylogistics.epod"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
